@@ -1,0 +1,15 @@
+public final class com/anylocale/ComposeAnylocaleKt {
+	public static final fun locale (Lcom/anylocale/Anylocale$Config$Builder;Landroidx/compose/ui/text/intl/Locale;)Lcom/anylocale/Anylocale$Config$Builder;
+	public static final fun pluralStringResource (Lcom/anylocale/Anylocale;Lorg/jetbrains/compose/resources/PluralStringResource;ILandroidx/compose/runtime/Composer;I)Ljava/lang/String;
+	public static final fun pluralStringResource (Lcom/anylocale/Anylocale;Lorg/jetbrains/compose/resources/PluralStringResource;I[Ljava/lang/Object;Landroidx/compose/runtime/Composer;I)Ljava/lang/String;
+	public static final fun pluralStringResource (Lorg/jetbrains/compose/resources/PluralStringResource;ILandroidx/compose/runtime/Composer;I)Ljava/lang/String;
+	public static final fun pluralStringResource (Lorg/jetbrains/compose/resources/PluralStringResource;I[Ljava/lang/Object;Landroidx/compose/runtime/Composer;I)Ljava/lang/String;
+	public static final fun setLocale (Lcom/anylocale/Anylocale;Landroidx/compose/ui/text/intl/Locale;)Ljava/util/Locale;
+	public static final fun stringArrayResource (Lcom/anylocale/Anylocale;Lorg/jetbrains/compose/resources/StringArrayResource;Landroidx/compose/runtime/Composer;I)Ljava/util/List;
+	public static final fun stringArrayResource (Lorg/jetbrains/compose/resources/StringArrayResource;Landroidx/compose/runtime/Composer;I)Ljava/util/List;
+	public static final fun stringResource (Lcom/anylocale/Anylocale;Lorg/jetbrains/compose/resources/StringResource;Landroidx/compose/runtime/Composer;I)Ljava/lang/String;
+	public static final fun stringResource (Lcom/anylocale/Anylocale;Lorg/jetbrains/compose/resources/StringResource;[Ljava/lang/Object;Landroidx/compose/runtime/Composer;I)Ljava/lang/String;
+	public static final fun stringResource (Lorg/jetbrains/compose/resources/StringResource;Landroidx/compose/runtime/Composer;I)Ljava/lang/String;
+	public static final fun stringResource (Lorg/jetbrains/compose/resources/StringResource;[Ljava/lang/Object;Landroidx/compose/runtime/Composer;I)Ljava/lang/String;
+}
+

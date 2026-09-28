@@ -1,0 +1,6 @@
+anylocale Android / Kotlin Multiplatform SDK
+
+This product includes software developed by Tolgee
+(https://github.com/tolgee/tolgee-mobile-kotlin-sdk), Apache License 2.0.
+Files under core/, compose/, compiler-plugin/, gradle-plugin/ and demo/ were
+renamed and modified for anylocale.

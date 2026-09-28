@@ -1,0 +1,56 @@
+public final class com/anylocale/AnylocaleCompilerSubPlugin : org/jetbrains/kotlin/gradle/plugin/KotlinCompilerPluginSupportPlugin {
+	public static final field Companion Lcom/anylocale/AnylocaleCompilerSubPlugin$Companion;
+	public fun <init> ()V
+	public synthetic fun apply (Ljava/lang/Object;)V
+	public fun apply (Lorg/gradle/api/Project;)V
+	public fun applyToCompilation (Lorg/jetbrains/kotlin/gradle/plugin/KotlinCompilation;)Lorg/gradle/api/provider/Provider;
+	public fun getCompilerPluginId ()Ljava/lang/String;
+	public fun getPluginArtifact ()Lorg/jetbrains/kotlin/gradle/plugin/SubpluginArtifact;
+	public fun getPluginArtifactForNative ()Lorg/jetbrains/kotlin/gradle/plugin/SubpluginArtifact;
+	public fun isApplicable (Lorg/jetbrains/kotlin/gradle/plugin/KotlinCompilation;)Z
+}
+
+public final class com/anylocale/AnylocaleCompilerSubPlugin$Companion {
+}
+
+public class com/anylocale/AnylocalePlugin : org/gradle/api/Plugin {
+	public static final field Companion Lcom/anylocale/AnylocalePlugin$Companion;
+	public fun <init> ()V
+	public synthetic fun apply (Ljava/lang/Object;)V
+	public fun apply (Lorg/gradle/api/Project;)V
+}
+
+public final class com/anylocale/AnylocalePlugin$Companion {
+	public final fun getVersion ()Ljava/lang/String;
+}
+
+public class com/anylocale/AnylocalePluginExtension {
+	public fun <init> (Lorg/gradle/api/model/ObjectFactory;)V
+	public final fun compilerPlugin (Lgroovy/lang/Closure;)Lcom/anylocale/extension/CompilerPluginExtension;
+	public final fun compilerPlugin (Lorg/gradle/api/Action;)Lcom/anylocale/extension/CompilerPluginExtension;
+	public final fun getCompilerPlugin ()Lcom/anylocale/extension/CompilerPluginExtension;
+	public final fun setupConvention (Lorg/gradle/api/Project;)V
+}
+
+public class com/anylocale/extension/CompilerPluginExtension {
+	public fun <init> (Lorg/gradle/api/model/ObjectFactory;)V
+	public final fun android (Lgroovy/lang/Closure;)Lcom/anylocale/extension/CompilerPluginExtension$AndroidExtension;
+	public final fun android (Lorg/gradle/api/Action;)Lcom/anylocale/extension/CompilerPluginExtension$AndroidExtension;
+	public final fun compose (Lgroovy/lang/Closure;)Lcom/anylocale/extension/CompilerPluginExtension$ComposeExtension;
+	public final fun compose (Lorg/gradle/api/Action;)Lcom/anylocale/extension/CompilerPluginExtension$ComposeExtension;
+	public final fun getAndroid ()Lcom/anylocale/extension/CompilerPluginExtension$AndroidExtension;
+	public final fun getCompose ()Lcom/anylocale/extension/CompilerPluginExtension$ComposeExtension;
+}
+
+public class com/anylocale/extension/CompilerPluginExtension$AndroidExtension {
+	public fun <init> (Lorg/gradle/api/model/ObjectFactory;)V
+	public fun getReplaceGetString ()Lorg/gradle/api/provider/Property;
+	public fun getReplacePluralString ()Lorg/gradle/api/provider/Property;
+}
+
+public class com/anylocale/extension/CompilerPluginExtension$ComposeExtension {
+	public fun <init> (Lorg/gradle/api/model/ObjectFactory;)V
+	public fun getReplacePluralStringResource ()Lorg/gradle/api/provider/Property;
+	public fun getReplaceStringResource ()Lorg/gradle/api/provider/Property;
+}
+

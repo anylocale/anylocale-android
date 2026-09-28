@@ -1,0 +1,236 @@
+public class com/anylocale/Anylocale {
+	public static final field Companion Lcom/anylocale/Anylocale$Companion;
+	public fun <init> (Lcom/anylocale/Anylocale$Config;)V
+	public final fun addChangeListener (Lcom/anylocale/Anylocale$ChangeListener;)V
+	public fun getAvailableLocaleTags ()Ljava/util/List;
+	public fun getAvailableLocales ()Ljava/util/List;
+	public final fun getChangeFlow ()Lkotlinx/coroutines/flow/MutableSharedFlow;
+	public fun getConfig ()Lcom/anylocale/Anylocale$Config;
+	public static final fun getInstance ()Lcom/anylocale/common/PlatformAnylocale;
+	public static final fun getInstanceOrNull ()Lcom/anylocale/common/PlatformAnylocale;
+	public fun getLocale ()Ljava/util/Locale;
+	public static final fun getSystemLocale ()Ljava/util/Locale;
+	public static final fun init (Lcom/anylocale/Anylocale$Config;)V
+	public static final fun init (Lkotlin/jvm/functions/Function1;)V
+	public static final fun new (Lcom/anylocale/Anylocale$Config;)Lcom/anylocale/common/PlatformAnylocale;
+	public static final fun new (Lkotlin/jvm/functions/Function1;)Lcom/anylocale/common/PlatformAnylocale;
+	public fun preload (Lkotlin/coroutines/Continuation;)Ljava/lang/Object;
+	public fun preloadAll (Lkotlin/coroutines/Continuation;)Ljava/lang/Object;
+	public final fun removeChangeListener (Lcom/anylocale/Anylocale$ChangeListener;)Z
+	protected final fun resolveLocale (Ljava/util/Locale;)Ljava/util/Locale;
+	public fun setLocale (Ljava/lang/String;)Ljava/util/Locale;
+	public fun setLocale (Ljava/util/Locale;)Ljava/util/Locale;
+	public final fun t (Ljava/lang/String;)Ljava/lang/String;
+	public fun t (Ljava/lang/String;Lcom/anylocale/model/AnylocaleMessageParams;)Ljava/lang/String;
+	public static synthetic fun t$default (Lcom/anylocale/Anylocale;Ljava/lang/String;Lcom/anylocale/model/AnylocaleMessageParams;ILjava/lang/Object;)Ljava/lang/String;
+	public fun tArray (Ljava/lang/String;)Ljava/util/List;
+	public fun tArrayFlow (Ljava/lang/String;)Lkotlinx/coroutines/flow/Flow;
+	public final fun tFlow (Ljava/lang/String;)Lkotlinx/coroutines/flow/Flow;
+	public fun tFlow (Ljava/lang/String;Lcom/anylocale/model/AnylocaleMessageParams;)Lkotlinx/coroutines/flow/Flow;
+	public static synthetic fun tFlow$default (Lcom/anylocale/Anylocale;Ljava/lang/String;Lcom/anylocale/model/AnylocaleMessageParams;ILjava/lang/Object;)Lkotlinx/coroutines/flow/Flow;
+}
+
+public abstract interface class com/anylocale/Anylocale$ChangeListener {
+	public abstract fun onTranslationsChanged ()V
+}
+
+public final class com/anylocale/Anylocale$Companion {
+	public final fun getInstance ()Lcom/anylocale/common/PlatformAnylocale;
+	public final fun getInstanceOrNull ()Lcom/anylocale/common/PlatformAnylocale;
+	public final fun getSystemLocale ()Ljava/util/Locale;
+	public final fun init (Lcom/anylocale/Anylocale$Config;)V
+	public final fun init (Lkotlin/jvm/functions/Function1;)V
+	public final fun new (Lcom/anylocale/Anylocale$Config;)Lcom/anylocale/common/PlatformAnylocale;
+	public final fun new (Lkotlin/jvm/functions/Function1;)Lcom/anylocale/common/PlatformAnylocale;
+}
+
+public final class com/anylocale/Anylocale$Config {
+	public static final field Companion Lcom/anylocale/Anylocale$Config$Companion;
+	public final fun component1 ()Ljava/util/Locale;
+	public final fun component2 ()Lcom/anylocale/Anylocale$Config$Network;
+	public final fun component3 ()Lcom/anylocale/Anylocale$Config$ContentDelivery;
+	public final fun component4 ()Ljava/util/List;
+	public final fun component5 ()Ljava/util/Locale;
+	public fun equals (Ljava/lang/Object;)Z
+	public final fun getAvailableLocales ()Ljava/util/List;
+	public final fun getContentDelivery ()Lcom/anylocale/Anylocale$Config$ContentDelivery;
+	public final fun getDefaultLanguage ()Ljava/util/Locale;
+	public final fun getLocale ()Ljava/util/Locale;
+	public final fun getNetwork ()Lcom/anylocale/Anylocale$Config$Network;
+	public fun hashCode ()I
+	public fun toString ()Ljava/lang/String;
+}
+
+public final class com/anylocale/Anylocale$Config$Builder {
+	public fun <init> ()V
+	public final fun availableLocaleTags (Ljava/util/List;)Lcom/anylocale/Anylocale$Config$Builder;
+	public final fun availableLocaleTags ([Ljava/lang/String;)Lcom/anylocale/Anylocale$Config$Builder;
+	public final fun availableLocales (Ljava/util/List;)Lcom/anylocale/Anylocale$Config$Builder;
+	public final fun availableLocales ([Ljava/util/Locale;)Lcom/anylocale/Anylocale$Config$Builder;
+	public final fun build ()Lcom/anylocale/Anylocale$Config;
+	public final fun contentDelivery (Lcom/anylocale/Anylocale$Config$ContentDelivery;)Lcom/anylocale/Anylocale$Config$Builder;
+	public final fun contentDelivery (Ljava/lang/String;)Lcom/anylocale/Anylocale$Config$Builder;
+	public final fun contentDelivery (Ljava/lang/String;Lkotlin/jvm/functions/Function1;)Lcom/anylocale/Anylocale$Config$Builder;
+	public final fun contentDelivery (Lkotlin/jvm/functions/Function1;)Lcom/anylocale/Anylocale$Config$Builder;
+	public static synthetic fun contentDelivery$default (Lcom/anylocale/Anylocale$Config$Builder;Ljava/lang/String;Lkotlin/jvm/functions/Function1;ILjava/lang/Object;)Lcom/anylocale/Anylocale$Config$Builder;
+	public final fun defaultLanguage (Ljava/lang/String;)Lcom/anylocale/Anylocale$Config$Builder;
+	public final fun defaultLanguage (Ljava/util/Locale;)Lcom/anylocale/Anylocale$Config$Builder;
+	public final fun getAvailableLocales ()Ljava/util/List;
+	public final fun getContentDelivery ()Lcom/anylocale/Anylocale$Config$ContentDelivery;
+	public final fun getDefaultLanguage ()Ljava/util/Locale;
+	public final fun getLocale ()Ljava/util/Locale;
+	public final fun getNetwork ()Lcom/anylocale/Anylocale$Config$Network;
+	public final fun locale (Ljava/lang/String;)Lcom/anylocale/Anylocale$Config$Builder;
+	public final fun locale (Ljava/util/Locale;)Lcom/anylocale/Anylocale$Config$Builder;
+	public final fun network (Lcom/anylocale/Anylocale$Config$Network;)Lcom/anylocale/Anylocale$Config$Builder;
+	public final fun network (Lkotlin/jvm/functions/Function1;)Lcom/anylocale/Anylocale$Config$Builder;
+	public final fun setAvailableLocales (Ljava/util/List;)V
+	public final fun setContentDelivery (Lcom/anylocale/Anylocale$Config$ContentDelivery;)V
+	public final fun setDefaultLanguage (Ljava/util/Locale;)V
+	public final fun setLocale (Ljava/util/Locale;)V
+	public final fun setNetwork (Lcom/anylocale/Anylocale$Config$Network;)V
+}
+
+public final class com/anylocale/Anylocale$Config$Companion {
+}
+
+public final class com/anylocale/Anylocale$Config$ContentDelivery {
+	public static final field Companion Lcom/anylocale/Anylocale$Config$ContentDelivery$Companion;
+	public fun <init> ()V
+	public final fun component1 ()Ljava/lang/String;
+	public final fun component2 ()Lkotlin/jvm/functions/Function1;
+	public final fun component3 ()Lcom/anylocale/storage/AnylocaleStorageProvider;
+	public final fun component4 ()Lcom/anylocale/Anylocale$Formatter;
+	public final fun component5 ()Ljava/lang/String;
+	public final fun component6 ()Ljava/lang/Integer;
+	public fun equals (Ljava/lang/Object;)Z
+	public final fun getFormatter ()Lcom/anylocale/Anylocale$Formatter;
+	public final fun getManifestPath ()Ljava/lang/String;
+	public final fun getMaxLocalesInMemory ()Ljava/lang/Integer;
+	public final fun getPath ()Lkotlin/jvm/functions/Function1;
+	public final fun getStorage ()Lcom/anylocale/storage/AnylocaleStorageProvider;
+	public final fun getUrl ()Ljava/lang/String;
+	public fun hashCode ()I
+	public fun toString ()Ljava/lang/String;
+}
+
+public final class com/anylocale/Anylocale$Config$ContentDelivery$Builder {
+	public fun <init> ()V
+	public final fun build ()Lcom/anylocale/Anylocale$Config$ContentDelivery;
+	public final fun formatter (Lcom/anylocale/Anylocale$Formatter;)Lcom/anylocale/Anylocale$Config$ContentDelivery$Builder;
+	public final fun getFormatter ()Lcom/anylocale/Anylocale$Formatter;
+	public final fun getManifestPath ()Ljava/lang/String;
+	public final fun getMaxLocalesInMemory ()Ljava/lang/Integer;
+	public final fun getPath ()Lkotlin/jvm/functions/Function1;
+	public final fun getStorage ()Lcom/anylocale/storage/AnylocaleStorageProvider;
+	public final fun getUrl ()Ljava/lang/String;
+	public final fun manifestPath (Ljava/lang/String;)Lcom/anylocale/Anylocale$Config$ContentDelivery$Builder;
+	public final fun maxLocalesInMemory (Ljava/lang/Integer;)Lcom/anylocale/Anylocale$Config$ContentDelivery$Builder;
+	public final fun path (Lkotlin/jvm/functions/Function1;)Lcom/anylocale/Anylocale$Config$ContentDelivery$Builder;
+	public final fun setFormatter (Lcom/anylocale/Anylocale$Formatter;)V
+	public final fun setManifestPath (Ljava/lang/String;)V
+	public final fun setMaxLocalesInMemory (Ljava/lang/Integer;)V
+	public final fun setPath (Lkotlin/jvm/functions/Function1;)V
+	public final fun setStorage (Lcom/anylocale/storage/AnylocaleStorageProvider;)V
+	public final fun setUrl (Ljava/lang/String;)V
+	public final fun storage (Lcom/anylocale/storage/AnylocaleStorageProvider;)Lcom/anylocale/Anylocale$Config$ContentDelivery$Builder;
+	public final fun url (Ljava/lang/String;)Lcom/anylocale/Anylocale$Config$ContentDelivery$Builder;
+}
+
+public final class com/anylocale/Anylocale$Config$ContentDelivery$Companion {
+}
+
+public final class com/anylocale/Anylocale$Config$Network {
+	public fun <init> ()V
+	public final fun component1 ()Lio/ktor/client/HttpClient;
+	public final fun component2 ()Lkotlin/coroutines/CoroutineContext;
+	public fun equals (Ljava/lang/Object;)Z
+	public final fun getClient ()Lio/ktor/client/HttpClient;
+	public final fun getContext ()Lkotlin/coroutines/CoroutineContext;
+	public fun hashCode ()I
+	public fun toString ()Ljava/lang/String;
+}
+
+public final class com/anylocale/Anylocale$Config$Network$Builder {
+	public fun <init> ()V
+	public final fun build ()Lcom/anylocale/Anylocale$Config$Network;
+	public final fun client (Lio/ktor/client/HttpClient;)Lcom/anylocale/Anylocale$Config$Network$Builder;
+	public final fun client (Lio/ktor/client/engine/HttpClientEngine;)Lcom/anylocale/Anylocale$Config$Network$Builder;
+	public final fun client (Lio/ktor/client/engine/HttpClientEngine;Lkotlin/jvm/functions/Function1;)Lcom/anylocale/Anylocale$Config$Network$Builder;
+	public final fun client (Lio/ktor/client/engine/HttpClientEngineFactory;)Lcom/anylocale/Anylocale$Config$Network$Builder;
+	public final fun client (Lio/ktor/client/engine/HttpClientEngineFactory;Lkotlin/jvm/functions/Function1;)Lcom/anylocale/Anylocale$Config$Network$Builder;
+	public final fun client (Lkotlin/jvm/functions/Function1;)Lcom/anylocale/Anylocale$Config$Network$Builder;
+	public final fun context (Lkotlin/coroutines/CoroutineContext;)Lcom/anylocale/Anylocale$Config$Network$Builder;
+	public final fun getClient ()Lio/ktor/client/HttpClient;
+	public final fun getContext ()Lkotlin/coroutines/CoroutineContext;
+	public final fun setClient (Lio/ktor/client/HttpClient;)V
+	public final fun setContext (Lkotlin/coroutines/CoroutineContext;)V
+}
+
+public abstract interface class com/anylocale/Anylocale$Formatter {
+}
+
+public final class com/anylocale/Anylocale$Formatter$ICU : com/anylocale/Anylocale$Formatter {
+	public static final field INSTANCE Lcom/anylocale/Anylocale$Formatter$ICU;
+	public fun equals (Ljava/lang/Object;)Z
+	public fun hashCode ()I
+	public fun toString ()Ljava/lang/String;
+}
+
+public final class com/anylocale/Anylocale$Formatter$Sprintf : com/anylocale/Anylocale$Formatter {
+	public static final field INSTANCE Lcom/anylocale/Anylocale$Formatter$Sprintf;
+	public fun equals (Ljava/lang/Object;)Z
+	public fun hashCode ()I
+	public fun toString ()Ljava/lang/String;
+}
+
+public final class com/anylocale/common/PlatformAnylocale : com/anylocale/Anylocale {
+	public final fun component1 ()Lcom/anylocale/Anylocale$Config;
+	public fun equals (Ljava/lang/Object;)Z
+	public fun getConfig ()Lcom/anylocale/Anylocale$Config;
+	public fun hashCode ()I
+	public fun toString ()Ljava/lang/String;
+}
+
+public abstract interface class com/anylocale/model/AnylocaleMessageParams : de/comahe/i18n4k/messages/formatter/MessageParameters {
+	public abstract fun get (Ljava/lang/CharSequence;)Ljava/lang/Object;
+}
+
+public final class com/anylocale/model/AnylocaleMessageParams$Indexed : com/anylocale/model/AnylocaleMessageParams {
+	public fun <init> (Ljava/util/List;)V
+	public fun <init> ([Ljava/lang/Object;)V
+	public final fun component1 ()Ljava/util/List;
+	public final fun copy (Ljava/util/List;)Lcom/anylocale/model/AnylocaleMessageParams$Indexed;
+	public static synthetic fun copy$default (Lcom/anylocale/model/AnylocaleMessageParams$Indexed;Ljava/util/List;ILjava/lang/Object;)Lcom/anylocale/model/AnylocaleMessageParams$Indexed;
+	public fun equals (Ljava/lang/Object;)Z
+	public fun get (Ljava/lang/CharSequence;)Ljava/lang/Object;
+	public final fun getArgList ()Ljava/util/List;
+	public fun hashCode ()I
+	public fun toString ()Ljava/lang/String;
+}
+
+public final class com/anylocale/model/AnylocaleMessageParams$Mapped : com/anylocale/model/AnylocaleMessageParams {
+	public fun <init> (Ljava/util/Map;)V
+	public final fun component1 ()Ljava/util/Map;
+	public final fun copy (Ljava/util/Map;)Lcom/anylocale/model/AnylocaleMessageParams$Mapped;
+	public static synthetic fun copy$default (Lcom/anylocale/model/AnylocaleMessageParams$Mapped;Ljava/util/Map;ILjava/lang/Object;)Lcom/anylocale/model/AnylocaleMessageParams$Mapped;
+	public fun equals (Ljava/lang/Object;)Z
+	public fun get (Ljava/lang/CharSequence;)Ljava/lang/Object;
+	public final fun getFormatArgs ()Ljava/util/Map;
+	public fun hashCode ()I
+	public fun toString ()Ljava/lang/String;
+}
+
+public final class com/anylocale/model/AnylocaleMessageParams$None : com/anylocale/model/AnylocaleMessageParams {
+	public static final field INSTANCE Lcom/anylocale/model/AnylocaleMessageParams$None;
+	public fun equals (Ljava/lang/Object;)Z
+	public fun get (Ljava/lang/CharSequence;)Ljava/lang/Object;
+	public fun hashCode ()I
+	public fun toString ()Ljava/lang/String;
+}
+
+public abstract interface class com/anylocale/storage/AnylocaleStorageProvider {
+	public abstract fun get (Ljava/lang/String;)[B
+	public abstract fun put (Ljava/lang/String;[B)V
+}
+

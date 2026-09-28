@@ -1,0 +1,261 @@
+package com.anylocale.common
+
+import android.content.Context
+import android.content.res.Resources
+import androidx.annotation.ArrayRes
+import androidx.annotation.PluralsRes
+import androidx.annotation.StringRes
+import com.anylocale.Anylocale
+import com.anylocale.AnylocaleAndroid
+import com.anylocale.model.AnylocaleMessageParams
+import io.ktor.client.*
+import io.ktor.client.engine.android.*
+import io.ktor.client.plugins.cache.*
+import com.anylocale.storage.AnylocaleStorageProvider
+import kotlinx.coroutines.Dispatchers
+import kotlin.coroutines.CoroutineContext
+
+/**
+ * A platform-specific instance of [HttpClient] configured for Android with default settings.
+ *
+ * This client is initialized with Android-specific configurations, enabling functionalities like
+ * automatic handling of HTTP redirects and caching support through the [HttpCache] feature.
+ * It serves as the default HTTP client used in platform-dependent operations where HTTP communication is needed.
+ */
+internal actual val platformHttpClient: HttpClient = HttpClient(Android) {
+    followRedirects = true
+    install(HttpCache)
+}
+
+/**
+ * Creates a platform-specific instance of the Anylocale library.
+ *
+ * @param config The configuration object required to initialize Anylocale.
+ * @return A platform-specific implementation of the Anylocale library.
+ */
+internal actual fun createPlatformAnylocale(config: Anylocale.Config): PlatformAnylocale {
+    return AnylocaleAndroid(config)
+}
+
+/**
+ * Represents a platform-specific CoroutineContext used for network operations.
+ *
+ * This property provides a CoroutineContext optimized for performing I/O operations,
+ * ensuring efficient execution of network-related tasks. It is typically used in
+ * scenarios where network requests or other I/O-bound tasks need to run on a
+ * suitable dispatcher.
+ *
+ * By default, this is set to `Dispatchers.IO`, which is designed for offloading blocking
+ * I/O tasks to a shared pool of threads.
+ */
+internal actual val platformNetworkContext: CoroutineContext
+    get() = Dispatchers.IO
+
+/**
+ * Returns a localized formatted string from [Anylocale] cache or the application's package's
+ * default string table, substituting the format arguments as defined in
+ * [java.util.Formatter] and [java.lang.String.format].
+ *
+ * @param anylocale The [Anylocale] instance to get the cached string from.
+ * @param resId Resource id for the format string
+ * @return The string data associated with the resource, formatted and
+ *         stripped of styled text information.
+ */
+fun Context.getStringT(anylocale: Anylocale, @StringRes resId: Int): String {
+    return when (anylocale) {
+        is AnylocaleAndroid -> anylocale.t(this, resId)
+        else -> AnylocaleAndroid.getKeyFromResources(this, resId)?.let {
+            anylocale.t(key = it, parameters = AnylocaleMessageParams.None)
+        }
+    } ?: this.getString(resId)
+}
+
+fun Resources.getStringT(anylocale: Anylocale, @StringRes resId: Int): String {
+    return when (anylocale) {
+        is AnylocaleAndroid -> anylocale.t(this, resId)
+        else -> AnylocaleAndroid.getKeyFromResources(this, resId)?.let {
+            anylocale.t(key = it, parameters = AnylocaleMessageParams.None)
+        }
+    } ?: this.getString(resId)
+}
+
+/**
+ * Returns a localized formatted string from [Anylocale] cache or the application's package's
+ * default string table, substituting the format arguments as defined in
+ * [java.util.Formatter] and [java.lang.String.format].
+ *
+ * @param resId Resource id for the format string
+ * @return The string data associated with the resource, formatted and
+ *         stripped of styled text information.
+ */
+fun Context.getStringT(@StringRes resId: Int): String {
+    val instance = Anylocale.instanceOrNull ?: return this.getString(resId)
+    return this.getStringT(instance, resId)
+}
+
+fun Resources.getStringT(@StringRes resId: Int): String {
+    val instance = Anylocale.instanceOrNull ?: return this.getString(resId)
+    return this.getStringT(instance, resId)
+}
+
+/**
+ * Returns a localized formatted string from [Anylocale] cache or the application's package's
+ * default string table, substituting the format arguments as defined in
+ * [java.util.Formatter] and [java.lang.String.format].
+ *
+ * @param anylocale The [Anylocale] instance to get the cached string from.
+ * @param resId Resource id for the format string
+ * @param formatArgs The format arguments that will be used for
+ *                   substitution.
+ * @return The string data associated with the resource, formatted and
+ *         stripped of styled text information.
+ */
+fun Context.getStringT(anylocale: Anylocale, @StringRes resId: Int, vararg formatArgs: Any): String {
+    return when (anylocale) {
+        is AnylocaleAndroid -> anylocale.t(this, resId, *formatArgs)
+        else -> AnylocaleAndroid.getKeyFromResources(this, resId)?.let {
+            anylocale.t(key = it, parameters = AnylocaleMessageParams.Indexed(*formatArgs))
+        }
+    } ?: this.getString(resId, *formatArgs)
+}
+
+fun Resources.getStringT(anylocale: Anylocale, @StringRes resId: Int, vararg formatArgs: Any): String {
+    return when (anylocale) {
+        is AnylocaleAndroid -> anylocale.t(this, resId, *formatArgs)
+        else -> AnylocaleAndroid.getKeyFromResources(this, resId)?.let {
+            anylocale.t(key = it, parameters = AnylocaleMessageParams.Indexed(*formatArgs))
+        }
+    } ?: this.getString(resId, *formatArgs)
+}
+
+/**
+ * Returns a localized formatted string from [Anylocale] cache or the application's package's
+ * default string table, substituting the format arguments as defined in
+ * [java.util.Formatter] and [java.lang.String.format].
+ *
+ * @param resId Resource id for the format string
+ * @param formatArgs The format arguments that will be used for
+ *                   substitution.
+ * @return The string data associated with the resource, formatted and
+ *         stripped of styled text information.
+ */
+fun Context.getStringT(@StringRes resId: Int, vararg formatArgs: Any): String {
+    val instance = Anylocale.instanceOrNull ?: return this.getString(resId, *formatArgs)
+    return this.getStringT(instance, resId, *formatArgs)
+}
+
+fun Resources.getStringT(@StringRes resId: Int, vararg formatArgs: Any): String {
+    val instance = Anylocale.instanceOrNull ?: return this.getString(resId, *formatArgs)
+    return this.getStringT(instance, resId, *formatArgs)
+}
+
+fun Resources.getQuantityStringT(anylocale: Anylocale, @PluralsRes resId: Int, quantity: Int): String {
+    return when (anylocale) {
+        is AnylocaleAndroid -> anylocale.tPlural(this, resId, quantity)
+        else -> AnylocaleAndroid.getKeyFromResources(this, resId)?.let {
+            anylocale.t(key = it, AnylocaleMessageParams.Indexed(quantity))
+        }
+    }?: this.getQuantityString(resId, quantity)
+}
+
+fun Resources.getQuantityStringT(anylocale: Anylocale, @PluralsRes resId: Int, quantity: Int, vararg formatArgs: Any): String {
+    return when (anylocale) {
+        is AnylocaleAndroid -> anylocale.tPlural(this, resId, quantity, *formatArgs)
+        else -> AnylocaleAndroid.getKeyFromResources(this, resId)?.let {
+            anylocale.t(key = it, AnylocaleMessageParams.Indexed(quantity, *formatArgs))
+        }
+    } ?: this.getQuantityString(resId, quantity, *formatArgs)
+}
+
+fun Resources.getQuantityStringT(@PluralsRes resId: Int, quantity: Int): String {
+    val instance = Anylocale.instanceOrNull ?: return this.getQuantityString(resId, quantity)
+    return this.getQuantityStringT(instance, resId, quantity)
+}
+
+fun Resources.getQuantityStringT(@PluralsRes resId: Int, quantity: Int, vararg formatArgs: Any): String {
+    val instance = Anylocale.instanceOrNull ?: return this.getQuantityString(resId, quantity, *formatArgs)
+    return this.getQuantityStringT(instance, resId, quantity, *formatArgs)
+}
+
+fun Resources.getStringArrayT(anylocale: Anylocale, @ArrayRes resId: Int): Array<String> {
+    val list = when (anylocale) {
+        is AnylocaleAndroid -> anylocale.tArray(this, resId)
+        else -> AnylocaleAndroid.getKeyFromResources(this, resId)?.let {
+            anylocale.tArray(key = it)
+        }
+    }
+    return list?.ifEmpty { null }?.toTypedArray() ?: this.getStringArray(resId)
+}
+
+/**
+ * Returns a localized formatted string from [Anylocale] cache or the application's package's
+ * default string table, substituting the format arguments as defined in
+ * [java.util.Formatter] and [java.lang.String.format].
+ *
+ * This function will fall back to the Android `getText` method if no translation is found - preserving formatting.
+ * If translation is found, no style information is preserved and the method acts the same as [getStringT].
+ *
+ * @param anylocale The [Anylocale] instance to get the cached string from.
+ * @param resId Resource id for the format string
+ * @return The string data associated with the resource, formatted and
+ *         stripped of styled text information.
+ */
+fun Context.getTextT(anylocale: Anylocale, @StringRes resId: Int): CharSequence {
+    return when (anylocale) {
+        is AnylocaleAndroid -> anylocale.tStyled(this, resId)
+        else -> AnylocaleAndroid.getKeyFromResources(this, resId)?.let {
+            anylocale.t(key = it, parameters = AnylocaleMessageParams.None)
+        }
+    } ?: this.getText(resId)
+}
+
+fun Resources.getTextT(anylocale: Anylocale, @StringRes resId: Int): CharSequence {
+    return when (anylocale) {
+        is AnylocaleAndroid -> anylocale.tStyled(this, resId)
+        else -> AnylocaleAndroid.getKeyFromResources(this, resId)?.let {
+            anylocale.t(key = it, parameters = AnylocaleMessageParams.None)
+        }
+    } ?: this.getText(resId)
+}
+
+fun Resources.getTextT(anylocale: Anylocale, @StringRes resId: Int, def: CharSequence?): CharSequence? {
+    return when (anylocale) {
+        is AnylocaleAndroid -> anylocale.tStyled(this, resId, def)
+        else -> resId.takeUnless { it == 0 }?.let {
+            AnylocaleAndroid.getKeyFromResources(this, it)?.let { key ->
+                anylocale.t(key = key, parameters = AnylocaleMessageParams.None)
+            }
+        }
+    } ?: this.getText(resId, def)
+}
+
+fun Resources.getQuantityTextT(anylocale: Anylocale, @PluralsRes resId: Int, quantity: Int): CharSequence {
+    return when (anylocale) {
+        is AnylocaleAndroid -> anylocale.tPluralStyled(this, resId, quantity)
+        else -> AnylocaleAndroid.getKeyFromResources(this, resId)?.let {
+            anylocale.t(key = it, parameters = AnylocaleMessageParams.Indexed(quantity))
+        }
+    } ?: this.getQuantityText(resId, quantity)
+}
+
+fun Resources.getTextArrayT(anylocale: Anylocale, @ArrayRes resId: Int): Array<out CharSequence> {
+    return when (anylocale) {
+        is AnylocaleAndroid -> anylocale.tArrayStyled(this, resId)
+        else -> AnylocaleAndroid.getKeyFromResources(this, resId)?.let {
+            anylocale.tArray(key = it).toTypedArray()
+        }
+    } ?: this.getTextArray(resId)
+}
+
+internal actual val platformStorage: AnylocaleStorageProvider?
+    get() = null
+
+/**
+ * Typealias representing a platform-specific implementation of the Anylocale class for Android.
+ *
+ * This alias maps `PlatformAnylocale` to `AnylocaleAndroid` on the Android platform, allowing platform
+ * dependency abstraction in multi-platform projects. The actual implementation, `AnylocaleAndroid`,
+ * provides Android-specific utilities for managing translations and localization tasks using
+ * string resources.
+ */
+actual typealias PlatformAnylocale = AnylocaleAndroid

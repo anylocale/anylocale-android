@@ -1,0 +1,69 @@
+name: Apple Binaries
+
+on:
+  release:
+    types: [ published ]
+  workflow_dispatch:
+
+permissions:
+  contents: write
+
+jobs:
+  linking:
+    runs-on: macos-latest
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v5
+
+      - name: Setup Java
+        uses: actions/setup-java@v5
+        with:
+          distribution: temurin
+          java-version: 21
+
+      - name: Setup Gradle
+        uses: gradle/actions/setup-gradle@v4
+
+      - name: Install Cocoapods
+        run: brew install cocoapods
+
+      - name: Build
+        run: ./gradlew core:build
+
+      - name: Framework Anylocale
+        continue-on-error: true
+        run: ./gradlew core:assembleKMPAnylocaleXCFramework
+
+      - name: Framework Anylocale Release
+        continue-on-error: true
+        run: ./gradlew core:assembleKMPAnylocaleReleaseXCFramework
+
+      - name: Framework Anylocale Debug
+        continue-on-error: true
+        run: ./gradlew core:assembleKMPAnylocaleDebugXCFramework
+
+      - name: Create XCFramework Archive
+        run: |
+          cd core/build/XCFrameworks/release
+          tar -czf KMPAnylocale-release.xcframework.tar.gz KMPAnylocale.xcframework
+          cd ../debug
+          tar -czf KMPAnylocale-debug.xcframework.tar.gz KMPAnylocale.xcframework
+          cd ../../../../
+          mv core/build/XCFrameworks/release/KMPAnylocale-release.xcframework.tar.gz .
+          mv core/build/XCFrameworks/debug/KMPAnylocale-debug.xcframework.tar.gz .
+
+      - name: Upload XCFramework to Release
+        if: ${{ github.event_name == 'release' }}
+        uses: softprops/action-gh-release@v2.3.2
+        with:
+          files: |
+            KMPAnylocale-release.xcframework.tar.gz
+            KMPAnylocale-debug.xcframework.tar.gz
+
+      - name: Upload XCFramework to action packages
+        if: ${{ github.event_name == 'workflow_dispatch' }}
+        uses: actions/upload-artifact@v4
+        with:
+          path: |
+            KMPAnylocale-release.xcframework.tar.gz
+            KMPAnylocale-debug.xcframework.tar.gz

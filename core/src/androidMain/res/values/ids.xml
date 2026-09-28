@@ -1,0 +1,7 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <!-- View tags for storing resource IDs for dynamic re-translation -->
+    <item name="anylocale_text_res_id" type="id"/>
+    <item name="anylocale_hint_res_id" type="id"/>
+    <item name="anylocale_content_desc_res_id" type="id"/>
+</resources>
