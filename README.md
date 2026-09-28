@@ -88,8 +88,11 @@ Given the distribution URL `<url>`, the SDK requests:
   object keyed by CLDR plural category (`{"one": "...", "other": "..."}`), or an array of
   strings (for `<string-array>`).
 
-Requests carry `sdkType` and `sdkVersion` headers. The HTTP client honours `ETag` and
-`Cache-Control`; the persistent storage is the offline fallback when the network fetch fails.
+Requests carry `sdkType` and `sdkVersion` headers. The in-memory HTTP cache honours `ETag`
+and `Cache-Control` within one process, but the client does not yet send `If-None-Match`
+on a cold start, so every launch downloads the manifest and the locale file in full (a few
+kilobytes each); the persistent storage is the offline fallback when the network fetch
+fails. Sending the stored ETag on launch is the next change planned for this client.
 
 ### Locale resolution
 
