@@ -20,14 +20,27 @@ Bundled resources stay the fallback, so nothing breaks offline or before the fir
 
 ## Installation
 
+Releases are served by JitPack from the tags of this repository.
+
+```kotlin
+// settings.gradle.kts
+dependencyResolutionManagement {
+    repositories {
+        google()
+        mavenCentral()
+        maven("https://jitpack.io")
+    }
+}
+```
+
 ```toml
 # gradle/libs.versions.toml
 [versions]
-anylocale = "1.0.0-alpha05"
+anylocale = "v1.0.1"
 
 [libraries]
-anylocale = { group = "com.anylocale", name = "sdk", version.ref = "anylocale" }
-anylocale-compose = { group = "com.anylocale", name = "sdk-compose", version.ref = "anylocale" }
+anylocale = { group = "com.github.anylocale.anylocale-android", name = "sdk", version.ref = "anylocale" }
+anylocale-compose = { group = "com.github.anylocale.anylocale-android", name = "sdk-compose", version.ref = "anylocale" }
 ```
 
 ```kotlin
