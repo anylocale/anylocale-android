@@ -40,19 +40,19 @@ public class MainJavaActivity extends ComponentActivity implements Anylocale.Cha
         updateParameterizedStrings();
 
         Button buttonEn = findViewById(R.id.button_en);
+        Button buttonDe = findViewById(R.id.button_de);
         Button buttonFr = findViewById(R.id.button_fr);
-        Button buttonCs = findViewById(R.id.button_cs);
 
         buttonEn.setOnClickListener(v -> {
             anylocale.setLocale(Locale.ENGLISH);
             anylocale.preload(this);
         });
-        buttonFr.setOnClickListener(v -> {
-            anylocale.setLocale(Locale.FRENCH);
+        buttonDe.setOnClickListener(v -> {
+            anylocale.setLocale(Locale.GERMAN);
             anylocale.preload(this);
         });
-        buttonCs.setOnClickListener(v -> {
-            anylocale.setLocale("cs");
+        buttonFr.setOnClickListener(v -> {
+            anylocale.setLocale(Locale.FRENCH);
             anylocale.preload(this);
         });
     }
@@ -66,6 +66,20 @@ public class MainJavaActivity extends ComponentActivity implements Anylocale.Cha
         parameter.setText(getString(R.string.percentage_placeholder, "87"));
         plural.setText(getResources().getQuantityString(R.plurals.plr_test_placeholder_2, 2, 3, "Plurals"));
         array.setText(String.join(", ", getResources().getStringArray(R.array.array_test)));
+        updateProbeStrings();
+    }
+
+    // Keys published by the local anylocale server (see README, "Local server").
+    private void updateProbeStrings() {
+        TextView getStringText = findViewById(R.id.probe_get_string_text);
+        TextView noConnection = findViewById(R.id.probe_no_connection_text);
+        TextView pluralOne = findViewById(R.id.probe_plural_one_text);
+        TextView pluralOther = findViewById(R.id.probe_plural_other_text);
+
+        getStringText.setText(getString(R.string.home_hourly_forecast));
+        noConnection.setText(getString(R.string.error_no_connection));
+        pluralOne.setText(getResources().getQuantityString(R.plurals.home_rain_alerts_count, 1, 1));
+        pluralOther.setText(getResources().getQuantityString(R.plurals.home_rain_alerts_count, 3, 3));
     }
 
     @Override

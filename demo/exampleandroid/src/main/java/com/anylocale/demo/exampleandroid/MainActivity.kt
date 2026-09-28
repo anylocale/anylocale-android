@@ -52,12 +52,12 @@ class MainActivity : ComponentActivity() {
       anylocale.setLocale(Locale.ENGLISH)
       anylocale.preload(this)
     }
-    findViewById<Button>(R.id.button_fr).setOnClickListener {
-      anylocale.setLocale(Locale.FRENCH)
+    findViewById<Button>(R.id.button_de).setOnClickListener {
+      anylocale.setLocale(Locale.GERMAN)
       anylocale.preload(this)
     }
-    findViewById<Button>(R.id.button_cs).setOnClickListener {
-      anylocale.setLocale("cs")
+    findViewById<Button>(R.id.button_fr).setOnClickListener {
+      anylocale.setLocale(Locale.FRENCH)
       anylocale.preload(this)
     }
   }
@@ -70,6 +70,20 @@ class MainActivity : ComponentActivity() {
       resources.getQuantityString(R.plurals.plr_test_placeholder_2, 2, 3, "Plurals")
     findViewById<TextView>(R.id.array_text).text =
       resources.getStringArray(R.array.array_test).joinToString()
+    updateProbeStrings()
+  }
+
+  // Keys published by the local anylocale server (see README, "Local server"). The bundled
+  // value is prefixed [local] so a string still coming from the bundle is visible at a glance.
+  private fun updateProbeStrings() {
+    findViewById<TextView>(R.id.probe_get_string_text).text =
+      getString(R.string.home_hourly_forecast)
+    findViewById<TextView>(R.id.probe_no_connection_text).text =
+      getString(R.string.error_no_connection)
+    findViewById<TextView>(R.id.probe_plural_one_text).text =
+      resources.getQuantityString(R.plurals.home_rain_alerts_count, 1, 1)
+    findViewById<TextView>(R.id.probe_plural_other_text).text =
+      resources.getQuantityString(R.plurals.home_rain_alerts_count, 3, 3)
   }
 
   override fun onStart() {

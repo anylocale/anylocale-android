@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="utf-8"?>
+<network-security-config xmlns:android="http://schemas.android.com/apk/res/android">
+    <domain-config>
+        <domain includeSubdomains="true">anylocale.com</domain>
+    </domain-config>
+    <!-- Debug builds only: the emulator reaches a server on the host's localhost at 10.0.2.2 over plain HTTP. -->
+    <domain-config cleartextTrafficPermitted="true">
+        <domain includeSubdomains="false">10.0.2.2</domain>
+    </domain-config>
+</network-security-config>

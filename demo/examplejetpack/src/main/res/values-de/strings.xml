@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<resources>
+  <string name="home.feels_like">[local] Gefuehlt</string>
+  <string name="home.hourly_forecast">[local] Stuendliche Vorhersage</string>
+  <string name="error.no_connection">[local] Keine Internetverbindung</string>
+  <plurals name="home.rain_alerts_count">
+    <item quantity="one">[local] %1$d Regenwarnung heute</item>
+    <item quantity="other">[local] %1$d Regenwarnungen heute</item>
+  </plurals>
+</resources>

@@ -17,6 +17,7 @@ import androidx.compose.runtime.Composable
 import androidx.compose.runtime.collectAsState
 import androidx.compose.runtime.remember
 import androidx.compose.ui.Modifier
+import androidx.compose.ui.unit.dp
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.lifecycle.lifecycleScope
 import com.anylocale.Anylocale
@@ -48,6 +49,7 @@ class MainActivity : ComponentActivity() {
               count = 10,
               param = 10,
             )
+            ProbeStrings()
             LocaleSwitcher()
           }
         }
@@ -83,10 +85,23 @@ fun PluralText(count: Int, param: Int, modifier: Modifier = Modifier) {
   )
 }
 
+// Keys published by the local anylocale server (see README, "Local server"). The bundled
+// value is prefixed [local] so a string still coming from the bundle is visible at a glance.
+@Composable
+fun ProbeStrings(modifier: Modifier = Modifier) {
+  Column(modifier = modifier.padding(top = 16.dp)) {
+    Text(text = stringResource(R.string.home_feels_like))
+    Text(text = stringResource(R.string.home_hourly_forecast))
+    Text(text = stringResource(R.string.error_no_connection))
+    Text(text = pluralStringResource(R.plurals.home_rain_alerts_count, 1, 1))
+    Text(text = pluralStringResource(R.plurals.home_rain_alerts_count, 3, 3))
+  }
+}
+
 val LOCALES = arrayOf(
   "en" to "English",
+  "de" to "Deutsch",
   "fr" to "Français",
-  "cs" to "Čeština",
 )
 
 @Composable

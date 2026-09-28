@@ -268,8 +268,25 @@ every available locale.
 
 Demo apps live in `demo/`: `exampleandroid` (Views, Kotlin and Java Activities),
 `examplejetpack` (Jetpack Compose) and `multiplatform-compose` (Compose Multiplatform,
-desktop). Replace the placeholder distribution URL in their `MyApplication`/`Setup` before
-running them against your own content.
+desktop). Replace the distribution URL in their `MyApplication`/`Setup` before running them
+against your own content.
+
+### Local server
+
+`exampleandroid` and `examplejetpack` currently point at a local anylocale server,
+`http://10.0.2.2:3005/ota/v1/<key>` (the emulator's address for the host's localhost), with
+the key of a Kotlin distribution of the `localdev` project (locales de, en, es, fr). Debug
+builds permit cleartext HTTP to `10.0.2.2` through `src/debug/res/xml/network_security.xml`;
+release builds keep the `anylocale.com` only configuration.
+
+Both demos show four keys that server publishes: `home.feels_like` (a layout `@string`
+reference in the Views demo, `stringResource` in Compose), `home.hourly_forecast` and
+`error.no_connection` (`getString`), and the plural `home.rain_alerts_count` with quantities 1
+and 3 (`getQuantityString` / `pluralStringResource`). Resource names keep the dots, which aapt
+turns into underscores in `R` (`R.string.home_feels_like`) while `getResourceEntryName` still
+returns `home.feels_like`, the key the SDK sends to the server. The bundled values in
+`res/values*/strings.xml` are prefixed `[local]`, so a string that still comes from the
+bundle is visible at a glance.
 
 ## Release notes
 

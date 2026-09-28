@@ -55,6 +55,47 @@
             android:textAlignment="center"
             android:textSize="20sp" />
 
+    <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:id="@+id/probe_layout_text"
+            android:text="@string/home.feels_like"
+            android:textAlignment="center"
+            android:textSize="18sp"
+            android:layout_marginBottom="8dp" />
+
+    <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:id="@+id/probe_get_string_text"
+            android:textAlignment="center"
+            android:textSize="18sp"
+            android:layout_marginBottom="8dp" />
+
+    <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:id="@+id/probe_no_connection_text"
+            android:textAlignment="center"
+            android:textSize="18sp"
+            android:layout_marginBottom="8dp" />
+
+    <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:id="@+id/probe_plural_one_text"
+            android:textAlignment="center"
+            android:textSize="18sp"
+            android:layout_marginBottom="8dp" />
+
+    <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:id="@+id/probe_plural_other_text"
+            android:textAlignment="center"
+            android:textSize="18sp"
+            android:layout_marginBottom="24dp" />
+
     <Button
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
@@ -67,16 +108,16 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_margin="16dp"
-            android:id="@+id/button_fr"
-            android:text="French"
+            android:id="@+id/button_de"
+            android:text="German"
             android:textAlignment="center" />
 
     <Button
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_margin="16dp"
-            android:id="@+id/button_cs"
-            android:text="Czech"
+            android:id="@+id/button_fr"
+            android:text="French"
             android:textAlignment="center" />
 
 </LinearLayout>

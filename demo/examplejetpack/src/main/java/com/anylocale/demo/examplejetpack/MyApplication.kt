@@ -11,7 +11,7 @@ class MyApplication : Application() {
 
     Anylocale.init {
       contentDelivery {
-        url = "https://anylocale.com/ota/v1/your-distribution-key"
+        url = "http://10.0.2.2:3005/ota/v1/dk_51af250f9952639a5bba181e0ac0c7fc22bd2dd28819782bfa2627a4ba4a8b34"
         storage = AnylocaleStorageProviderAndroid(this@MyApplication, BuildConfig.VERSION_CODE)
       }
     }

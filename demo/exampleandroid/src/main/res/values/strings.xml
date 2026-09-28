@@ -22,4 +22,11 @@
     <item quantity="one">%3$s: %1$d test out of %2$d ok</item>
     <item quantity="other">%3$s: %1$d tests out of %2$d ok</item>
   </plurals>
+  <string name="home.feels_like">[local] Feels like</string>
+  <string name="home.hourly_forecast">[local] Hourly forecast</string>
+  <string name="error.no_connection">[local] No internet connection</string>
+  <plurals name="home.rain_alerts_count">
+    <item quantity="one">[local] %1$d rain alert today</item>
+    <item quantity="other">[local] %1$d rain alerts today</item>
+  </plurals>
 </resources>
