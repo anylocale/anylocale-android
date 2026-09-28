@@ -1,0 +1,13 @@
+$dokka.format:html-v1
+$dokka.linkExtension:html
+$dokka.location:com.anylocale.common/PlatformAnylocale/config/#/PointingToDeclaration/Core/com.anylocale.common/-platform-anylocale/[wasm-js]config.html
+module:Compose
+com.anylocale
+module:Core
+com.anylocale
+com.anylocale.common
+com.anylocale.model
+com.anylocale.storage
+module:Gradle Plugin
+com.anylocale
+com.anylocale.extension
