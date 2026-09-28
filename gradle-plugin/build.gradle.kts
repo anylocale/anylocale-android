@@ -68,7 +68,11 @@ gradlePlugin {
 
 mavenPublishing {
     publishToMavenCentral(automaticRelease = true)
-    signAllPublications()
+    // JitPack and a plain publishToMavenLocal have no key; only a release
+    // to Maven Central carries one, through the signingInMemoryKey property.
+    if (providers.gradleProperty("signingInMemoryKey").isPresent) {
+        signAllPublications()
+    }
 
     coordinates(
         groupId = libGroup,

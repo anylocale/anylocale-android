@@ -36,7 +36,7 @@ dependencyResolutionManagement {
 ```toml
 # gradle/libs.versions.toml
 [versions]
-anylocale = "v1.0.1"
+anylocale = "v1.0.2"
 
 [libraries]
 anylocale = { group = "com.github.anylocale.anylocale-android", name = "sdk", version.ref = "anylocale" }

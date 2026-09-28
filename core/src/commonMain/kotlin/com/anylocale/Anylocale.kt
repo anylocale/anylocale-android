@@ -1096,7 +1096,7 @@ open class Anylocale(
          * Used for tracking plugin/integration usage.
          */
         internal const val TYPE_HEADER = "Compose Multiplatform"
-        internal const val VERSION_HEADER = "1.0.1"
+        internal const val VERSION_HEADER = "1.0.2"
 
         /**
          * Provides the locale of the system where the application is running.
